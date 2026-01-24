@@ -1,0 +1,270 @@
+/* Tyler was here - Theme Circles */
+
+.bearming-palette-preview{
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  margin: .35rem 0 .75rem;
+}
+
+.bearming-palette-preview span{
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;                 /* turns squares into circles */
+  display: inline-block;
+  border: 1px solid rgba(255,255,255,.18); /* subtle ring in dark mode */
+  box-shadow: 0 0 0 1px rgba(0,0,0,.25);   /* subtle ring in light mode */
+}
+
+/* Tyler was here
+Applause No Count */
+
+form#upvote-form {
+  display: block !important;
+  margin-block-start: 1.3em;
+}
+
+form#upvote-form > small {
+  display: block;
+  font-size: 1em;
+}
+
+:is(.post, .page) .upvote-button {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 0.1em;
+  border: 0;
+  border-radius: var(--radius);
+  background: none;
+  color: var(--muted);
+  font: inherit;
+  font-size: var(--font-small);
+  line-height: 1.2;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: transform 0.15s ease;
+}
+
+:is(.post, .page) .upvote-button:focus-visible {
+  outline: 2px solid var(--link);
+  outline-offset: 2px;
+}
+
+:is(.post, .page) .upvote-button svg,
+:is(.post, .page) .upvote-button .upvote-count {
+  display: none !important;
+}
+
+:is(.post, .page) .upvote-button::before {
+  content: "🌱";
+  display: inline-block;
+  font-size: 1.35rem;
+  line-height: 1;
+  color: var(--link);
+  vertical-align: -0.06em;
+  transition: transform 0.2s ease;
+}
+
+@media (hover: hover) {
+  :is(.post, .page)
+  .upvote-button:not(.upvoted):not([disabled]):hover::before {
+    transform: scale(1.18) rotate(-6deg);
+  }
+}
+
+:is(.post, .page) .upvote-button.upvoted::before,
+:is(.post, .page) .upvote-button[disabled]::before {
+  content: "🌳";
+}
+
+:is(.post, .page) .upvote-button:not([disabled]):active {
+  transform: translateY(1px);
+}
+
+:is(.post, .page) .upvote-button.upvoted,
+:is(.post, .page) .upvote-button[disabled] {
+  opacity: 0.7;
+  color: inherit !important;
+  cursor: default;
+}
+
+/* Tyler was here - Blog List Cards */
+/* Blog list cards | Version 1.0.2 */
+
+.blog-posts {
+  list-style: none;
+  margin-block: var(--space);
+  margin-inline: 0;
+  padding: 0;
+}
+
+.blog-posts li {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: baseline;
+  gap: 1.2rem;
+  padding: 0.75rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.18s ease;
+}
+
+.blog-posts li + li {
+  margin-block-start: 0.5rem;
+}
+
+.blog-posts li a {
+  flex: 1;
+}
+
+.blog-posts li a:visited {
+  color: var(--visited);
+}
+
+.blog-posts li time {
+  flex-shrink: 0;
+  font-size: var(--font-small);
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+@media (hover: hover) {
+  .blog-posts li:hover {
+    border-color: var(--hover-border);
+    background: var(--hover-surface);
+    transform: translateY(var(--hover-lift));
+  }
+
+  .blog-posts li:hover a {
+    text-decoration: none;
+  }
+}
+
+@media (max-width: 34rem) {
+  .blog-posts li {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.1rem;
+  }
+
+  .blog-posts li a {
+    order: 1;
+  }
+
+  .blog-posts li span {
+    order: 2;
+  }
+}
+
+/* Tyler was here - Header Title Underline */
+/* Header title underline | Version 1.0.2 */
+
+:where(header a.title) {
+  text-decoration: none;
+}
+
+:where(header a.title h1) {
+  position: relative;
+  display: inline-block;
+  padding-block-end: 0.35em;
+}
+
+:where(header a.title h1)::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--link);
+  transform: scaleX(0.25);
+  transform-origin: left;
+  opacity: 0.8;
+}
+
+@media (hover: hover) {
+  :where(header a.title h1)::before {
+    transition: transform 0.25s ease, opacity 0.25s ease;
+  }
+
+  :where(header a.title:hover h1)::before {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+:where(header a.title:focus-visible h1)::before {
+  transform: scaleX(1);
+  opacity: 1;
+}
+
+/* Tyler was here - Horizontal Header with buttons */
+/* Horizontal header with buttons | Version 1.1.0 */
+
+:where(header) {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding-block-end: var(--header-space);
+  border-block-end: var(--header-border);
+}
+
+:where(header nav p) {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-size: var(--font-small);
+}
+
+:where(header nav a) {
+  display: inline-block;
+  padding: 0.1rem 0.5rem;
+  color: var(--muted);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  text-decoration: none;
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    transform 0.18s ease,
+    border-color 0.25s ease;
+}
+
+@media (hover: hover) {
+  :where(header nav a:hover) {
+    border-color: var(--hover-border);
+    background: var(--hover-surface);
+    color: var(--link);
+    transform: translateY(var(--hover-lift));
+  }
+}
+
+:where(header nav a:active) {
+  transform: translateY(0);
+  color: var(--link);
+  border-color: var(--hover-border);
+}
+
+/* Tyler was here - 2025-12-31 22:43  */
+/* Curve underline | Version 1.0.0 */
+span.bearming-curve {
+	display: block;
+	width: 6rem;
+	height: 8px;
+	margin: 1.2rem auto 0;
+	background-color: var(--link);
+	-webkit-mask:
+		url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='8' viewBox='0 0 120 8'><path d='M0 4 Q30 0 60 4 T120 4' fill='none' stroke='black' stroke-width='2' stroke-linecap='round'/></svg>")
+		no-repeat center / contain;
+	mask:
+		url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='8' viewBox='0 0 120 8'><path d='M0 4 Q30 0 60 4 T120 4' fill='none' stroke='black' stroke-width='2' stroke-linecap='round'/></svg>")
+		no-repeat center / contain;
+	opacity: 0.9;
+}
