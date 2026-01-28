@@ -7,21 +7,21 @@
  */
 
 /* =========================
-   Palette: 🕯️ Candlewax 
+   Palette: 🌒 Night Reading Room 
    ========================= */
 
 :root {
   color-scheme: light dark;
 
   /* Light mode */
-  --bg-light: #fefcf8;
-  --txt-light: #2e2b26;
-  --link-light: #8b6a3d;
+  --bg-light: #f8f6f3;
+  --txt-light: #3b3630;
+  --link-light: #9a6b3f;
 
   /* Dark mode */
-  --bg-dark: #16130f;
-  --txt-dark: #e9e4da;
-  --link-dark: #c9a76a;
+  --bg-dark: #161411;
+  --txt-dark: #e7e3dc;
+  --link-dark: #c79b6d;
 
 
 /* =========================
