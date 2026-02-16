@@ -245,6 +245,48 @@ ul.blog-posts li span {
   flex: 0 0 130px;
 }
 
+/* ==========================
+   Blog search (QuietType)
+   Palette-safe, blog-scoped
+   ========================== */
+
+body.blog #searchInput {
+  width: min(30rem, 100%);
+  margin-block: 1.6em;
+
+  padding: 0.65rem 0.85rem;
+  font: inherit;
+  letter-spacing: inherit;
+
+  appearance: none;
+  color: var(--text);
+  background: var(--bg);
+
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+
+  outline: none;
+}
+
+/* Focus = signal, not noise */
+body.blog #searchInput:focus,
+body.blog #searchInput:focus-visible {
+  border-color: color-mix(in srgb, var(--accent) 55%, var(--border));
+  box-shadow: 0 0 0 3px
+    color-mix(in srgb, var(--accent) 16%, transparent);
+}
+
+/* Placeholder restraint */
+body.blog #searchInput::placeholder {
+  color: var(--muted);
+  opacity: 0.75;
+}
+
+/* Tyler was here also */
+body.blog #searchInput {
+  background: color-mix(in srgb, var(--bg) 92%, black);
+}
+
 /* Tyler was here - Applause No Count */
 
 form#upvote-form {
@@ -348,7 +390,6 @@ benjamin kept as legacy alias for older posts */
   padding-bottom: 9px;
   font-family: var(--font-secondary);
   font-size: 0.9em;
-  font-style: italic;
   color: var(--muted);
   margin-top: 1.2rem;
 }
@@ -368,4 +409,129 @@ benjamin kept as legacy alias for older posts */
 .benjamin a:hover {
   color: var(--text);
   background-color: var(--surface);
+}
+
+/* ==========================
+   Meadow.cafe Guestbooks embed
+   Scoped + token-based (palette-safe)
+   ========================== */
+
+:where(#guestbooks___guestbook-form-container, #guestbooks___guestbook-messages-container) {
+  color: var(--text);
+}
+
+/* Form wrapper */
+#guestbooks___guestbook-form-container {
+  margin-block: 1.25rem 1.75rem;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius) + 2px);
+  background: color-mix(in srgb, var(--surface) 85%, var(--bg));
+}
+
+/* Layout inside the form */
+#guestbooks___guestbook-form {
+  display: grid;
+  gap: 0.75rem;
+}
+
+/* Inputs / textarea */
+#guestbooks___guestbook-form :where(input, textarea) {
+  width: 100%;
+  box-sizing: border-box;
+  font: inherit;
+  color: var(--text);
+
+  padding: 0.65rem 0.75rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--bg) 70%, black);
+}
+
+#guestbooks___guestbook-form textarea {
+  min-height: 7rem;
+  resize: vertical;
+  line-height: 1.45;
+}
+
+/* Focus treatment consistent with QuietType */
+#guestbooks___guestbook-form :where(input, textarea, button):focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Button */
+#guestbooks___guestbook-form button[type="submit"] {
+  justify-self: start;
+
+  padding: 0.55rem 0.9rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+
+  background: transparent;
+  color: var(--accent);
+  font: inherit;
+
+  transition: transform 0.12s ease, background-color 0.15s ease, border-color 0.15s ease;
+}
+
+#guestbooks___guestbook-form button[type="submit"]:hover {
+  background: var(--surface);
+  border-color: var(--border);
+  transform: translateY(-1px);
+}
+
+#guestbooks___guestbook-form button[type="submit"]:active {
+  transform: translateY(0);
+}
+
+/* Challenge + error areas */
+#guestbooks___challenge-answer-container {
+  margin-top: 0.25rem;
+}
+
+#guestbooks___error-message {
+  margin-top: 0.25rem;
+  color: color-mix(in srgb, var(--accent) 70%, white);
+  opacity: 0.95;
+  font-size: var(--font-small);
+}
+
+/* “Powered by” line */
+#guestbooks___guestbook-made-with {
+  opacity: 0.85;
+}
+
+#guestbooks___guestbook-made-with a {
+  color: var(--accent);
+}
+
+/* Messages header */
+#guestbooks___guestbook-messages-header {
+  margin-top: 0;
+}
+
+/* Messages container */
+#guestbooks___guestbook-messages-container {
+  display: grid;
+  gap: 0.9rem;
+  margin-block: 1rem 2rem;
+}
+
+/* Robust message styling (handles unknown markup from JS) */
+#guestbooks___guestbook-messages-container > * {
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius) + 2px);
+  background: color-mix(in srgb, var(--surface) 75%, var(--bg));
+}
+
+/* Links inside messages */
+#guestbooks___guestbook-messages-container a {
+  color: var(--accent);
+}
+
+/* Small/meta text inside messages */
+#guestbooks___guestbook-messages-container :where(small, time) {
+  color: var(--muted);
 }
