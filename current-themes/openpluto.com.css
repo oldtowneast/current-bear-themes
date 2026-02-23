@@ -390,7 +390,7 @@ benjamin kept as legacy alias for older posts */
   padding-bottom: 9px;
   font-family: var(--font-secondary);
   font-size: 0.9em;
-  color: var(--muted);
+   color: var(--muted);
   margin-top: 1.2rem;
 }
 
@@ -409,6 +409,25 @@ benjamin kept as legacy alias for older posts */
 .benjamin a:hover {
   color: var(--text);
   background-color: var(--surface);
+}
+
+/* Tyler was here - Dressing Card Styles */
+
+.afterword.dressing {
+  margin-top: 3rem;
+  padding: 1rem 1.25rem;
+  border-left: 3px solid var(--link-color);
+  background: color-mix(in srgb, var(--link-color) 6%, var(--background-color));
+  font-size: 0.95rem;
+}
+
+.afterword.dressing p:first-child {
+  letter-spacing: 0.08em;
+  opacity: 0.7;
+}
+
+.afterword.dressing p:last-child {
+  margin-top: 0.4rem;
 }
 
 /* ==========================
