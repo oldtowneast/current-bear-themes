@@ -245,48 +245,6 @@ ul.blog-posts li span {
   flex: 0 0 130px;
 }
 
-/* ==========================
-   Blog search (QuietType)
-   Palette-safe, blog-scoped
-   ========================== */
-
-body.blog #searchInput {
-  width: min(30rem, 100%);
-  margin-block: 1.6em;
-
-  padding: 0.65rem 0.85rem;
-  font: inherit;
-  letter-spacing: inherit;
-
-  appearance: none;
-  color: var(--text);
-  background: var(--bg);
-
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-
-  outline: none;
-}
-
-/* Focus = signal, not noise */
-body.blog #searchInput:focus,
-body.blog #searchInput:focus-visible {
-  border-color: color-mix(in srgb, var(--accent) 55%, var(--border));
-  box-shadow: 0 0 0 3px
-    color-mix(in srgb, var(--accent) 16%, transparent);
-}
-
-/* Placeholder restraint */
-body.blog #searchInput::placeholder {
-  color: var(--muted);
-  opacity: 0.75;
-}
-
-/* Tyler was here also */
-body.blog #searchInput {
-  background: color-mix(in srgb, var(--bg) 92%, black);
-}
-
 /* Tyler was here - Applause No Count */
 
 form#upvote-form {
