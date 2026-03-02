@@ -493,3 +493,42 @@ benjamin kept as legacy alias for older posts */
 #guestbooks___guestbook-messages-container :where(small, time) {
   color: var(--muted);
 }
+
+/* QuietType - Palette Preview Dots */
+.palette-preview {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  margin: 0.35rem 0 0.75rem;
+}
+
+.palette-preview span {
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  display: inline-block;
+
+  /* token-driven rings that adapt to any palette */
+  border: 1px solid color-mix(in srgb, var(--text) 18%, transparent);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--bg) 35%, transparent);
+}
+
+/* Copy code plugin */
+.copy-code-button {
+  color: var(--text-color);
+  opacity: 0.6;
+}
+
+.copy-code-button:focus-visible {
+  opacity: 1;
+}
+
+@media (hover: hover) {
+  .highlight:hover .copy-code-button {
+    opacity: 0.8;
+  }
+
+  .copy-code-button:hover {
+    opacity: 1;
+  }
+}
