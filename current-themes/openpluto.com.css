@@ -1,11 +1,11 @@
 :root {
   color-scheme: dark;
 
-/* Late Night Hacker */
+/* Night Reading Room */
 
-  --bg: #0b0f14;     /* deep terminal black-blue */
-  --text: #d7dde5;   /* cool phosphor gray */
-  --accent: #4cc2ff; /* cyan signal */
+  --bg: #161411;
+  --text: #e7e3dc;
+  --accent: #c79b6d;
 
   /* Layout + type */
   --width: min(720px, 90vw);

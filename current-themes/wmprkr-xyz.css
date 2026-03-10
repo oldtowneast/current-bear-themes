@@ -1,16 +1,33 @@
+@import url(https://fonts.bunny.net/css?family=inter:400,400i|inter-tight:400,400i|jetbrains-mono:400,400i|open-sans:400,400i|ubuntu-sans-mono:400,400i|work-sans:400,400i);
+
+
+/* 
+
+font-family: 'Inter', sans-serif;
+font-family: 'Inter Tight', sans-serif;
+font-family: 'Open Sans', sans-serif; 
+font-family: 'Work Sans', sans-serif;
+font-family: 'JetBrains Mono', monospace;
+font-family: 'Ubuntu Sans Mono', monospace;
+
+*/
+
+
 :root {
   color-scheme: dark;
 
-/* Monochrome Signal */
+/* Late Night Hacker */
 
-  --bg: #141414;
-  --text: #e2e2e2;
-  --accent: #8f9fb0;
+  --bg: #0b0f14;     /* deep terminal black-blue */
+  --text: #d7dde5;   /* cool phosphor gray */
+  --accent: #4cc2ff; /* cyan signal */
+
 
   /* Layout + type */
   --width: min(720px, 90vw);
-  --font-main: system-ui, Verdana, sans-serif;
-  --font-secondary: system-ui, Verdana, sans-serif;
+  --font-main: "Work Sans" , system-ui, Verdana, sans-serif;
+  --font-secondary: "Inter" , system-ui, Verdana, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
   --font-scale: 1rem;
 
   /* UI tokens */
@@ -89,7 +106,7 @@ button {
 }
 
 time {
-  font-family: monospace;
+  font-family:var(--font-mono);
   font-style: normal;
   font-size: 15px;
   color: var(--muted);
@@ -126,7 +143,7 @@ img {
 }
 
 code {
-  font-family: monospace;
+  font-family: var(--font-mono);
   padding: 2px;
   background: var(--code-bg);
   color: var(--code-text);
