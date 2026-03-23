@@ -1,17 +1,13 @@
 @import url(https://fonts.bunny.net/css?family=inter:400,400i|inter-tight:400,400i|jetbrains-mono:400,400i|open-sans:400,400i|ubuntu-sans-mono:400,400i|work-sans:400,400i);
 
-
 /* 
-
 font-family: 'Inter', sans-serif;
 font-family: 'Inter Tight', sans-serif;
 font-family: 'Open Sans', sans-serif; 
 font-family: 'Work Sans', sans-serif;
 font-family: 'JetBrains Mono', monospace;
 font-family: 'Ubuntu Sans Mono', monospace;
-
 */
-
 
 :root {
   color-scheme: dark;
@@ -21,7 +17,6 @@ font-family: 'Ubuntu Sans Mono', monospace;
   --bg: #0b0f14;     /* deep terminal black-blue */
   --text: #d7dde5;   /* cool phosphor gray */
   --accent: #4cc2ff; /* cyan signal */
-
 
   /* Layout + type */
   --width: min(720px, 90vw);
@@ -70,7 +65,7 @@ h6 {
   font-family: var(--font-main);
 }
 
-/* Tyler was here */
+  /* Tyler was here */
 .title h1 {
   font-size: 1.5em;
   color: var(--title);
@@ -162,6 +157,10 @@ footer {
   padding: 25px 0;
   text-align: center;
   color: var(--muted);
+}
+
+footer p {
+  font-size: 0.75em;
 }
 
 .title:hover {
@@ -298,7 +297,7 @@ form#upvote-form>small {
 }
 
 :is(.post, .page) .upvote-button::before {
-  content: "❄️";
+  content: "🥚";
   display: inline-block;
   font-size: 1.45rem;
   line-height: 1;
@@ -315,7 +314,7 @@ form#upvote-form>small {
 
 :is(.post, .page) .upvote-button.upvoted::before,
 :is(.post, .page) .upvote-button[disabled]::before {
-  content: "☃️";
+  content: "🐣";
 }
 
 :is(.post, .page) .upvote-button:not([disabled]):active {
