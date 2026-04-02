@@ -1,16 +1,28 @@
+@import url(https://fonts.bunny.net/css?family=inter:400,400i|inter-tight:400,400i|jetbrains-mono:400,400i|open-sans:400,400i|ubuntu-sans-mono:400,400i|work-sans:400,400i);
+
+/* 
+font-family: 'Inter', sans-serif;
+font-family: 'Inter Tight', sans-serif;
+font-family: 'Open Sans', sans-serif; 
+font-family: 'Work Sans', sans-serif;
+font-family: 'JetBrains Mono', monospace;
+font-family: 'Ubuntu Sans Mono', monospace;
+*/
+
 :root {
   color-scheme: dark;
 
-/* Monochrome Signal */
+/* "Easter Bunny" Operator – A Modified "Midnight Operator" for Easter 2026 */
 
-  --bg: #141414;
-  --text: #e2e2e2;
-  --accent: #8f9fb0;
+--bg: #000208;     
+--text: #f3fdd4;   
+--accent: #a78bfa; 
 
   /* Layout + type */
   --width: min(720px, 90vw);
-  --font-main: system-ui, Verdana, sans-serif;
-  --font-secondary: system-ui, Verdana, sans-serif;
+  --font-main: "Work Sans" , system-ui, Verdana, sans-serif;
+  --font-secondary: "Inter" , system-ui, Verdana, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
   --font-scale: 1rem;
 
   /* UI tokens */
@@ -53,7 +65,7 @@ h6 {
   font-family: var(--font-main);
 }
 
-/* Tyler was here */
+  /* Tyler was here */
 .title h1 {
   font-size: 1.5em;
   color: var(--title);
@@ -89,7 +101,7 @@ button {
 }
 
 time {
-  font-family: monospace;
+  font-family:var(--font-mono);
   font-style: normal;
   font-size: 15px;
   color: var(--muted);
@@ -126,7 +138,7 @@ img {
 }
 
 code {
-  font-family: monospace;
+  font-family: var(--font-mono);
   padding: 2px;
   background: var(--code-bg);
   color: var(--code-text);
@@ -145,6 +157,10 @@ footer {
   padding: 25px 0;
   text-align: center;
   color: var(--muted);
+}
+
+footer p {
+  font-size: 0.75em;
 }
 
 .title:hover {
@@ -228,9 +244,6 @@ header nav a:focus-visible {
   outline-offset: 2px;
 }
 
-
-
-
 /* blog post list */
 ul.blog-posts {
   list-style: none;
@@ -244,49 +257,6 @@ ul.blog-posts li {
 ul.blog-posts li span {
   flex: 0 0 130px;
 }
-
-/* ==========================
-   Blog search (QuietType)
-   Palette-safe, blog-scoped
-   ========================== */
-
-body.blog #searchInput {
-  width: min(30rem, 100%);
-  margin-block: 1.6em;
-
-  padding: 0.65rem 0.85rem;
-  font: inherit;
-  letter-spacing: inherit;
-
-  appearance: none;
-  color: var(--text);
-  background: var(--bg);
-
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-
-  outline: none;
-}
-
-/* Focus = signal, not noise */
-body.blog #searchInput:focus,
-body.blog #searchInput:focus-visible {
-  border-color: color-mix(in srgb, var(--accent) 55%, var(--border));
-  box-shadow: 0 0 0 3px
-    color-mix(in srgb, var(--accent) 16%, transparent);
-}
-
-/* Placeholder restraint */
-body.blog #searchInput::placeholder {
-  color: var(--muted);
-  opacity: 0.75;
-}
-
-/* Tyler was here also */
-body.blog #searchInput {
-  background: color-mix(in srgb, var(--bg) 92%, black);
-}
-
 
 /* Tyler was here - Applause No Count */
 
@@ -327,7 +297,7 @@ form#upvote-form>small {
 }
 
 :is(.post, .page) .upvote-button::before {
-  content: "❄️";
+  content: "🥚";
   display: inline-block;
   font-size: 1.45rem;
   line-height: 1;
@@ -344,7 +314,7 @@ form#upvote-form>small {
 
 :is(.post, .page) .upvote-button.upvoted::before,
 :is(.post, .page) .upvote-button[disabled]::before {
-  content: "☃️";
+  content: "🐣";
 }
 
 :is(.post, .page) .upvote-button:not([disabled]):active {
@@ -383,11 +353,9 @@ span.fieldmark {
     url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 16'><path d='M2 9 C35 3 65 3 85 9 S130 15 158 7' fill='none' stroke='black' stroke-width='2.7' stroke-linecap='round'/></svg>") no-repeat center / contain;
 }
 
-/* Afterword (formerly: benjamin)
-benjamin kept as legacy alias for older posts */
+/* Afterword (formerly: benjamin) */
 
-.afterword,
-.benjamin {
+.afterword {
   padding-bottom: 9px;
   font-family: var(--font-secondary);
   font-size: 0.9em;
@@ -395,8 +363,8 @@ benjamin kept as legacy alias for older posts */
   color: var(--muted);
   margin-top: 1.2rem;
 }
-.afterword a,
-.benjamin a {
+
+.afterword a {
   display: inline-block;
   font-weight: 600;
   text-decoration: none;
@@ -406,11 +374,11 @@ benjamin kept as legacy alias for older posts */
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-.afterword a:hover,
-.benjamin a:hover {
+.afterword a:hover {
   color: var(--text);
   background-color: var(--surface);
 }
+
 /* ==========================
    Meadow.cafe Guestbooks embed
    Scoped + token-based (palette-safe)
@@ -536,86 +504,41 @@ benjamin kept as legacy alias for older posts */
   color: var(--muted);
 }
 
+/* QuietType - Palette Preview Dots */
+.palette-preview {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  margin: 0.35rem 0 0.75rem;
 }
 
-/* HTML: <div class="batman"></div> */
-.batman {
-  width: 100%;
-  max-width: 400px;
-  aspect-ratio: 3;
-  background: #000;
-  --g:#000 calc(100% - 1px),#0000;
-  mask:
-    conic-gradient(from 170deg at 47% 8%,#0000,#000 2deg 20deg,#0000 22deg) 
-     0 0/100% 50% no-repeat,
-    conic-gradient(from 170deg at 53% 8%,#0000,#000 2deg 20deg,#0000 22deg) 
-     0 0/100% 50% no-repeat,
-    radial-gradient(4.5% 20% at 50% 35%,var(--g)),
-    conic-gradient(#000 0 0) exclude,
-    radial-gradient(20% 35% at 50% -5%,var(--g)),
-    radial-gradient(30% 44% at 20% 100%,var(--g)),
-    radial-gradient(30% 44% at 80% 100%,var(--g)),
-    radial-gradient(16% 51% at left ,var(--g)),
-    radial-gradient(16% 51% at right,var(--g));
+.palette-preview span {
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  display: inline-block;
+
+  /* token-driven rings that adapt to any palette */
+  border: 1px solid color-mix(in srgb, var(--text) 18%, transparent);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--bg) 35%, transparent);
 }
 
-/* HTML: <div class="ribbon2">Your text content</div> */
-.ribbon2 {
-  font-size: 28px;
-  font-weight: bold;
-  color: #fff;
-}
-.ribbon2 {
-  --c: #2699dc;
-  --r: 20%; /* control the cutout part */
-  
-  padding: .6em 1.3em; /* you may need to adjust this based on your content */
-  aspect-ratio: 1;
-  display: grid;
-  place-content: center;
-  text-align: center;
-  position: relative;
-  z-index: 0;
-  width: fit-content;
-  box-sizing: border-box;
-}
-.ribbon2:before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  inset: 60% 20% -40%;
-  background: color-mix(in srgb, var(--c), #000 35%);
-  clip-path: polygon(5% 0,95% 0,100% 100%,50% calc(100% - var(--r)),0 100%);
-}
-.ribbon2:after {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  inset: 0;
-  background: radial-gradient(35% 35%,#0000 96%,#0003 97% 99%,#0000) var(--c);
-  clip-path: polygon(100.00% 50.00%,89.23% 57.80%,96.19% 69.13%,83.26% 72.22%,85.36% 85.36%,72.22% 83.26%,69.13% 96.19%,57.80% 89.23%,50.00% 100.00%,42.20% 89.23%,30.87% 96.19%,27.78% 83.26%,14.64% 85.36%,16.74% 72.22%,3.81% 69.13%,10.77% 57.80%,0.00% 50.00%,10.77% 42.20%,3.81% 30.87%,16.74% 27.78%,14.64% 14.64%,27.78% 16.74%,30.87% 3.81%,42.20% 10.77%,50.00% 0.00%,57.80% 10.77%,69.13% 3.81%,72.22% 16.74%,85.36% 14.64%,83.26% 27.78%,96.19% 30.87%,89.23% 42.20%); /* from https://css-generators.com/starburst-shape/ */
+/* Copy code plugin */
+.copy-code-button {
+  color: var(--text-color);
+  opacity: 0.6;
 }
 
-/* HTML: <div class="ribbon">Your text content</div> */
-.ribbon {
-  font-size: 28px;
-  font-weight: bold;
-  color: var(--text)
+.copy-code-button:focus-visible {
+  opacity: 1;
 }
-.ribbon {
-  --f: .5em; /* control the folded part*/
-  --r: .8em; /* control the ribbon shape */
-  
-  position: absolute;
-  top: 20px;
-  left: calc(-1*var(--f));
-  padding-inline: 1.0em;
-  line-height: 1.8;
-  background: var(--accent);
-  border-bottom: var(--f) solid #0005;
-  border-right: var(--r) solid #0000;
-  clip-path: 
-    polygon(0 0,0 calc(100% - var(--f)),var(--f) 100%,
-      var(--f) calc(100% - var(--f)),100% calc(100% - var(--f)),
-      calc(100% - var(--r)) calc(50% - var(--f)/2),100% 0);
+
+@media (hover: hover) {
+  .highlight:hover .copy-code-button {
+    opacity: 0.8;
+  }
+
+  .copy-code-button:hover {
+    opacity: 1;
+  }
 }

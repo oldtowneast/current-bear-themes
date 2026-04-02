@@ -1,16 +1,28 @@
+@import url(https://fonts.bunny.net/css?family=inter:400,400i|inter-tight:400,400i|jetbrains-mono:400,400i|open-sans:400,400i|ubuntu-sans-mono:400,400i|work-sans:400,400i);
+
+/* 
+font-family: 'Inter', sans-serif;
+font-family: 'Inter Tight', sans-serif;
+font-family: 'Open Sans', sans-serif; 
+font-family: 'Work Sans', sans-serif;
+font-family: 'JetBrains Mono', monospace;
+font-family: 'Ubuntu Sans Mono', monospace;
+*/
+
 :root {
   color-scheme: dark;
 
-/* Night Reading Room */
+/* Obsidian Vibes */
 
-  --bg: #161411;
-  --text: #e7e3dc;
-  --accent: #c79b6d;
+--bg: #0f0f0f;     
+--text: #eeeeee;   
+--accent: #a78bfa; 
 
   /* Layout + type */
   --width: min(720px, 90vw);
-  --font-main: system-ui, Verdana, sans-serif;
-  --font-secondary: system-ui, Verdana, sans-serif;
+  --font-main: "Work Sans" , system-ui, Verdana, sans-serif;
+  --font-secondary: "Inter" , system-ui, Verdana, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
   --font-scale: 1rem;
 
   /* UI tokens */
@@ -53,7 +65,7 @@ h6 {
   font-family: var(--font-main);
 }
 
-/* Tyler was here */
+  /* Tyler was here */
 .title h1 {
   font-size: 1.5em;
   color: var(--title);
@@ -89,7 +101,7 @@ button {
 }
 
 time {
-  font-family: monospace;
+  font-family:var(--font-mono);
   font-style: normal;
   font-size: 15px;
   color: var(--muted);
@@ -126,7 +138,7 @@ img {
 }
 
 code {
-  font-family: monospace;
+  font-family: var(--font-mono);
   padding: 2px;
   background: var(--code-bg);
   color: var(--code-text);
@@ -145,6 +157,10 @@ footer {
   padding: 25px 0;
   text-align: center;
   color: var(--muted);
+}
+
+footer p {
+  font-size: 0.75em;
 }
 
 .title:hover {
@@ -228,9 +244,6 @@ header nav a:focus-visible {
   outline-offset: 2px;
 }
 
-
-
-
 /* blog post list */
 ul.blog-posts {
   list-style: none;
@@ -284,7 +297,7 @@ form#upvote-form>small {
 }
 
 :is(.post, .page) .upvote-button::before {
-  content: "❄️";
+  content: "🥚";
   display: inline-block;
   font-size: 1.45rem;
   line-height: 1;
@@ -301,7 +314,7 @@ form#upvote-form>small {
 
 :is(.post, .page) .upvote-button.upvoted::before,
 :is(.post, .page) .upvote-button[disabled]::before {
-  content: "☃️";
+  content: "🐣";
 }
 
 :is(.post, .page) .upvote-button:not([disabled]):active {
@@ -340,20 +353,18 @@ span.fieldmark {
     url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 16'><path d='M2 9 C35 3 65 3 85 9 S130 15 158 7' fill='none' stroke='black' stroke-width='2.7' stroke-linecap='round'/></svg>") no-repeat center / contain;
 }
 
-/* Afterword (formerly: benjamin)
-benjamin kept as legacy alias for older posts */
+/* Afterword (formerly: benjamin) */
 
-.afterword,
-.benjamin {
+.afterword {
   padding-bottom: 9px;
   font-family: var(--font-secondary);
   font-size: 0.9em;
-   color: var(--muted);
+  /* font-style: italic; */
+  color: var(--muted);
   margin-top: 1.2rem;
 }
 
-.afterword a,
-.benjamin a {
+.afterword a {
   display: inline-block;
   font-weight: 600;
   text-decoration: none;
@@ -363,29 +374,9 @@ benjamin kept as legacy alias for older posts */
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-.afterword a:hover,
-.benjamin a:hover {
+.afterword a:hover {
   color: var(--text);
   background-color: var(--surface);
-}
-
-/* Tyler was here - Dressing Card Styles */
-
-.afterword.dressing {
-  margin-top: 3rem;
-  padding: 1rem 1.25rem;
-  border-left: 3px solid var(--link-color);
-  background: color-mix(in srgb, var(--link-color) 6%, var(--background-color));
-  font-size: 0.95rem;
-}
-
-.afterword.dressing p:first-child {
-  letter-spacing: 0.08em;
-  opacity: 0.7;
-}
-
-.afterword.dressing p:last-child {
-  margin-top: 0.4rem;
 }
 
 /* ==========================
@@ -511,4 +502,43 @@ benjamin kept as legacy alias for older posts */
 /* Small/meta text inside messages */
 #guestbooks___guestbook-messages-container :where(small, time) {
   color: var(--muted);
+}
+
+/* QuietType - Palette Preview Dots */
+.palette-preview {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  margin: 0.35rem 0 0.75rem;
+}
+
+.palette-preview span {
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  display: inline-block;
+
+  /* token-driven rings that adapt to any palette */
+  border: 1px solid color-mix(in srgb, var(--text) 18%, transparent);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--bg) 35%, transparent);
+}
+
+/* Copy code plugin */
+.copy-code-button {
+  color: var(--text-color);
+  opacity: 0.6;
+}
+
+.copy-code-button:focus-visible {
+  opacity: 1;
+}
+
+@media (hover: hover) {
+  .highlight:hover .copy-code-button {
+    opacity: 0.8;
+  }
+
+  .copy-code-button:hover {
+    opacity: 1;
+  }
 }
