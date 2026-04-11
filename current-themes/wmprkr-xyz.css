@@ -12,11 +12,12 @@ font-family: 'Ubuntu Sans Mono', monospace;
 :root {
   color-scheme: dark;
 
-/* "Easter Bunny" Operator – A Modified "Midnight Operator" for Easter 2026 */
+/* Late Night Hacker */
 
---bg: #000208;     
---text: #f3fdd4;   
---accent: #a78bfa; 
+  --bg: #0b0f14;     /* deep terminal black-blue */
+  --text: #d7dde5;   /* cool phosphor gray */
+  --accent: #4cc2ff; /* cyan signal */
+
 
   /* Layout + type */
   --width: min(720px, 90vw);
@@ -297,7 +298,7 @@ form#upvote-form>small {
 }
 
 :is(.post, .page) .upvote-button::before {
-  content: "🥚";
+  content: "🌱";
   display: inline-block;
   font-size: 1.45rem;
   line-height: 1;
@@ -314,7 +315,7 @@ form#upvote-form>small {
 
 :is(.post, .page) .upvote-button.upvoted::before,
 :is(.post, .page) .upvote-button[disabled]::before {
-  content: "🐣";
+  content: "🌳";
 }
 
 :is(.post, .page) .upvote-button:not([disabled]):active {
@@ -541,4 +542,95 @@ span.fieldmark {
   .copy-code-button:hover {
     opacity: 1;
   }
+}
+
+/* QuietType Pagination */
+
+body.blog .pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+
+  margin: var(--space-block) auto 0;
+  padding: 0.4rem 0.75rem;
+
+  font-size: var(--font-small);
+
+  background: color-mix(in srgb, var(--surface) 85%, var(--bg));
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius) + 2px);
+}
+
+/* Page info stays subtle */
+.pagination #pageInfo {
+  color: var(--muted);
+  white-space: nowrap;
+  font-family: var(--font-mono);
+}
+
+/* Links behave like your nav buttons */
+.pagination a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25em;
+
+  padding: 0.25em 0.5em;
+  border-radius: var(--radius);
+
+  color: var(--accent);
+  text-decoration: none;
+
+  transition:
+    background-color 0.15s ease,
+    transform 0.12s ease;
+}
+
+.pagination a:hover {
+  background: var(--surface);
+  transform: translateY(-1px);
+}
+
+.pagination a:active {
+  transform: translateY(0);
+}
+
+/* Disabled state stays quiet */
+.pagination a[disabled] {
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+/* Arrow treatment — slightly tighter */
+.pagination #prevPage::before {
+  content: "←";
+  opacity: 0.8;
+}
+
+.pagination #nextPage::after {
+  content: "→";
+  opacity: 0.8;
+}
+
+.pagination {
+  backdrop-filter: blur(6px);
+}
+
+body.blog .pagination {
+  margin-bottom: 1rem;
+}
+
+/* Button Page Styling */
+
+.button-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.button-grid img {
+  display: block;
+/*   border: 1px solid #ccc; */
+  border-radius: 4px;
 }
