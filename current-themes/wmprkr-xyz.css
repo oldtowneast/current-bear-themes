@@ -1,37 +1,36 @@
 @import url(https://fonts.bunny.net/css?family=inter:400,400i|inter-tight:400,400i|jetbrains-mono:400,400i|open-sans:400,400i|ubuntu-sans-mono:400,400i|work-sans:400,400i);
 
-/* 
-font-family: 'Inter', sans-serif;
-font-family: 'Inter Tight', sans-serif;
-font-family: 'Open Sans', sans-serif; 
-font-family: 'Work Sans', sans-serif;
-font-family: 'JetBrains Mono', monospace;
-font-family: 'Ubuntu Sans Mono', monospace;
-*/
+/* ==========================================================================
+   QuietType / wmprkr.xyz
+   Dark, restrained BearBlog theme
+   ========================================================================== */
+
+/* ==========================================================================
+   Tokens
+   ========================================================================== */
 
 :root {
   color-scheme: dark;
 
-/* Late Night Hacker */
-
-  --bg: #0b0f14;     /* deep terminal black-blue */
-  --text: #d7dde5;   /* cool phosphor gray */
-  --accent: #4cc2ff; /* cyan signal */
-
+  /* Monochrome Signal */
+  --bg: #141414;
+  --text: #e2e2e2;
+  --accent: #8f9fb0;
 
   /* Layout + type */
   --width: min(720px, 90vw);
-  --font-main: "Work Sans" , system-ui, Verdana, sans-serif;
-  --font-secondary: "Inter" , system-ui, Verdana, sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  --font-main: "Work Sans", system-ui, Verdana, sans-serif;
+  --font-secondary: "Inter", system-ui, Verdana, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
   --font-scale: 1rem;
-
-  /* UI tokens */
-  --radius: 6px;
   --font-small: 0.95em;
-  --link: var(--accent);
 
-  /* Derived tokens — do NOT change per palette */
+  /* UI */
+  --radius: 6px;
+  --link: var(--accent);
+  --space-block: 2rem;
+
+  /* Derived tokens — do not change per palette */
   --muted: color-mix(in srgb, var(--text) 70%, transparent);
   --border: color-mix(in srgb, var(--text) 14%, transparent);
   --surface: color-mix(in srgb, var(--text) 8%, var(--bg));
@@ -43,69 +42,25 @@ font-family: 'Ubuntu Sans Mono', monospace;
   --title: color-mix(in srgb, var(--text) 88%, white);
 }
 
+/* ==========================================================================
+   Base Layout
+   ========================================================================== */
+
 body {
-  font-family: var(--font-secondary);
-  font-size: var(--font-scale);
+  max-width: var(--width);
   margin: auto;
   padding: 20px;
-  max-width: var(--width);
-  text-align: left;
+
   background: var(--bg);
   color: var(--text);
+
+  font-family: var(--font-secondary);
+  font-size: var(--font-scale);
+  line-height: 1.5;
+  text-align: left;
+
   word-wrap: break-word;
   overflow-wrap: break-word;
-  line-height: 1.5;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: var(--font-main);
-}
-
-  /* Tyler was here */
-.title h1 {
-  font-size: 1.5em;
-  color: var(--title);
-}
-
-
-a {
-  color: var(--accent);
-  text-decoration: none;
-  cursor: pointer;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-a:visited {
-  color: var(--visited);
-}
-
-nav a {
-  margin-right: 8px;
-}
-
-strong,
-b {
-  color: var(--text);
-}
-
-button {
-  margin: 0;
-  cursor: pointer;
-}
-
-time {
-  font-family:var(--font-mono);
-  font-style: normal;
-  font-size: 15px;
-  color: var(--muted);
 }
 
 main {
@@ -125,6 +80,158 @@ main li {
   margin-block: 0.35em;
 }
 
+/* ==========================================================================
+   Typography
+   ========================================================================== */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-main);
+}
+
+strong,
+b {
+  color: var(--text);
+}
+
+time {
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 15px;
+  font-style: normal;
+}
+
+/* ==========================================================================
+   Links
+   ========================================================================== */
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:visited {
+  color: var(--visited);
+}
+
+/* ==========================================================================
+   Header / Navigation
+   ========================================================================== */
+
+header {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+header nav {
+  display: flex;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.title:hover {
+  text-decoration: none;
+}
+
+.title h1 {
+  color: var(--title);
+  font-size: 1.5em;
+}
+
+nav a {
+  margin-right: 0;
+}
+
+header nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+
+  padding: 0.25em 0.6em;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+
+  background: transparent;
+  color: var(--accent);
+
+  font-size: 0.95em;
+  font-weight: 500;
+  text-decoration: none;
+
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    transform 0.12s ease;
+}
+
+header nav a:hover {
+  background-color: var(--surface);
+  border-color: var(--border);
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+header nav a:active {
+  transform: translateY(0);
+}
+
+header nav a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ==========================================================================
+   Archive / Blog Index
+   ========================================================================== */
+
+ul.blog-posts {
+  list-style: none;
+  padding: 0;
+}
+
+ul.blog-posts li {
+  display: block;
+  margin-bottom: 1.25rem;
+}
+
+.blog-posts li time {
+  font-size: 0.82rem;
+  line-height: 1.2;
+  color: var(--muted);
+  font-style: italic;
+  font-family: var(--font-secondary);
+}
+
+ul.blog-posts li span {
+  display: block;
+  margin-bottom: 0.2rem;
+
+  color: var(--muted);
+  font-family: var(--font-secondary);
+  font-size: 0.75rem;
+  font-style: italic;
+  line-height: 1.2;
+}
+
+ul.blog-posts li a {
+  display: inline;
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   Tables / Media / Rules
+   ========================================================================== */
+
 table {
   width: 100%;
 }
@@ -138,21 +245,71 @@ img {
   max-width: 100%;
 }
 
-code {
-  font-family: var(--font-mono);
-  padding: 2px;
-  background: var(--code-bg);
-  color: var(--code-text);
-  border-radius: 3px;
+.inline {
+  width: auto !important;
 }
 
+/* ==========================================================================
+   Code
+   ========================================================================== */
+
+code {
+  padding: 2px;
+  border-radius: 3px;
+
+  background: var(--code-bg);
+  color: var(--code-text);
+
+  font-family: var(--font-mono);
+}
+
+.highlight,
+.code {
+  margin-block: 1em;
+  padding: 1px 15px;
+  overflow-x: auto;
+
+  border-radius: 3px;
+  background: var(--code-bg);
+  color: var(--code-text);
+}
+
+.copy-code-button {
+  color: var(--text);
+  opacity: 0.6;
+}
+
+.copy-code-button:focus-visible {
+  opacity: 1;
+}
+
+@media (hover: hover) {
+  .highlight:hover .copy-code-button {
+    opacity: 0.8;
+  }
+
+  .copy-code-button:hover {
+    opacity: 1;
+  }
+}
+
+/* ==========================================================================
+   Quotes
+   ========================================================================== */
+
 blockquote {
+  margin-inline: 0;
+  padding-left: 20px;
+
   border-left: 2px solid var(--border);
   color: var(--muted);
-  padding-left: 20px;
+
   font-style: italic;
-  margin-inline: 0;
 }
+
+/* ==========================================================================
+   Footer / Metadata
+   ========================================================================== */
 
 footer {
   padding: 25px 0;
@@ -164,109 +321,34 @@ footer p {
   font-size: 0.75em;
 }
 
-.title:hover {
-  text-decoration: none;
+.tags a {
+  font-size: 0.85em;
 }
 
-.title h1 {
-  font-size: 1.5em;
+.metas {
+  font-family: var(--font-secondary);
+  font-size: 0.85em;
 }
 
-.inline {
-  width: auto !important;
+/* ==========================================================================
+   Forms / Buttons
+   ========================================================================== */
+
+button {
+  margin: 0;
+  cursor: pointer;
 }
 
-.highlight,
-.code {
-  padding: 1px 15px;
-  background: var(--code-bg);
-  color: var(--code-text);
-  border-radius: 3px;
-  margin-block: 1em;
-  overflow-x: auto;
-}
-
-/* Tyler was here - Nav links alignment */
-header {
-  display: flex;
-  align-items: baseline;
-  gap: 1rem;
-}
-
-header nav {
-  margin-left: auto;
-  display: flex;
-  gap: 8px;
-}
-
-nav a {
-  margin-right: 0;
-}
-
-/* Tyler was here - Nav link button treatment */
-header nav a {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35em;
-
-  padding: 0.25em 0.6em;
-  font-size: 0.95em;
-  font-weight: 500;
-
-  border-radius: 6px;
-  background: transparent;
-  border: 1px solid transparent;
-
-  color: var(--accent);
-  text-decoration: none;
-
-  transition:
-    background-color 0.15s ease,
-    border-color 0.15s ease,
-    transform 0.12s ease;
-}
-
-header nav a:hover {
-  background-color: var(--surface);
-  border-color: var(--border);
-  text-decoration: none;
-  /* kill underline here */
-  transform: translateY(-1px);
-}
-
-header nav a:active {
-  transform: translateY(0);
-}
-
-/* Tyler was here - extra credit */
-
-header nav a:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
-}
-
-/* blog post list */
-ul.blog-posts {
-  list-style: none;
-  padding: 0;
-}
-
-ul.blog-posts li {
-  display: flex;
-}
-
-ul.blog-posts li span {
-  flex: 0 0 130px;
-}
-
-/* Tyler was here - Applause No Count */
+/* ==========================================================================
+   Upvote / Applause
+   ========================================================================== */
 
 form#upvote-form {
   display: block !important;
   margin-block-start: 1.3em;
 }
 
-form#upvote-form>small {
+form#upvote-form > small {
   display: block;
   font-size: 1em;
 }
@@ -275,15 +357,18 @@ form#upvote-form>small {
   display: inline-flex;
   align-items: center;
   padding: 0 0.1em;
+
   border: 0;
   border-radius: var(--radius);
   background: none;
   color: var(--muted);
+
   font: inherit;
   font-size: var(--font-small);
   line-height: 1.2;
-  cursor: pointer;
   white-space: nowrap;
+
+  cursor: pointer;
   transition: transform 0.15s ease;
 }
 
@@ -300,10 +385,12 @@ form#upvote-form>small {
 :is(.post, .page) .upvote-button::before {
   content: "🌱";
   display: inline-block;
+
+  color: var(--link);
   font-size: 1.45rem;
   line-height: 1;
-  color: var(--link);
   vertical-align: -0.06em;
+
   transition: transform 0.2s ease;
 }
 
@@ -329,24 +416,18 @@ form#upvote-form>small {
   cursor: default;
 }
 
-.tags a {
-  font-size: 0.85em;
-}
-
-.metas {
-  font-family: var(--font-secondary);
-  font-size: 0.85em;
-}
-
-/* Tyler was here - William's Fieldmark */
+/* ==========================================================================
+   Fieldmark
+   ========================================================================== */
 
 span.fieldmark {
   display: block;
   width: 9rem;
   height: 14px;
   margin: 1.2rem auto;
+
   background: var(--link);
-  opacity: .9;
+  opacity: 0.9;
 
   -webkit-mask:
     url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 16'><path d='M2 9 C35 3 65 3 85 9 S130 15 158 7' fill='none' stroke='black' stroke-width='2.7' stroke-linecap='round'/></svg>") no-repeat center / contain;
@@ -354,67 +435,69 @@ span.fieldmark {
     url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 16'><path d='M2 9 C35 3 65 3 85 9 S130 15 158 7' fill='none' stroke='black' stroke-width='2.7' stroke-linecap='round'/></svg>") no-repeat center / contain;
 }
 
-/* Afterword (formerly: benjamin) */
+/* ==========================================================================
+   Afterword
+   ========================================================================== */
 
 .afterword {
+  margin-top: 1.2rem;
   padding-bottom: 9px;
+
+  color: var(--muted);
   font-family: var(--font-secondary);
   font-size: 0.9em;
-  /* font-style: italic; */
-  color: var(--muted);
-  margin-top: 1.2rem;
 }
 
 .afterword a {
   display: inline-block;
+
+  color: var(--accent);
   font-weight: 600;
   text-decoration: none;
-  color: var(--accent);
-  /* padding: 2px 4px;
-  border-radius: 3px; */
-  transition: background-color 0.2s ease, color 0.2s ease;
+
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
 }
 
 .afterword a:hover {
-  color: var(--text);
   background-color: var(--surface);
+  color: var(--text);
 }
 
-/* ==========================
-   Meadow.cafe Guestbooks embed
-   Scoped + token-based (palette-safe)
-   ========================== */
+/* ==========================================================================
+   Meadow.cafe Guestbook
+   ========================================================================== */
 
 :where(#guestbooks___guestbook-form-container, #guestbooks___guestbook-messages-container) {
   color: var(--text);
 }
 
-/* Form wrapper */
 #guestbooks___guestbook-form-container {
   margin-block: 1.25rem 1.75rem;
   padding: 1rem;
+
   border: 1px solid var(--border);
   border-radius: calc(var(--radius) + 2px);
   background: color-mix(in srgb, var(--surface) 85%, var(--bg));
 }
 
-/* Layout inside the form */
 #guestbooks___guestbook-form {
   display: grid;
   gap: 0.75rem;
 }
 
-/* Inputs / textarea */
 #guestbooks___guestbook-form :where(input, textarea) {
-  width: 100%;
   box-sizing: border-box;
-  font: inherit;
+  width: 100%;
+  padding: 0.65rem 0.75rem;
+
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: color-mix(in srgb, var(--bg) 70%, black);
   color: var(--text);
 
-  padding: 0.65rem 0.75rem;
-  border-radius: var(--radius);
-  border: 1px solid var(--border);
-  background: color-mix(in srgb, var(--bg) 70%, black);
+  font: inherit;
 }
 
 #guestbooks___guestbook-form textarea {
@@ -423,25 +506,27 @@ span.fieldmark {
   line-height: 1.45;
 }
 
-/* Focus treatment consistent with QuietType */
 #guestbooks___guestbook-form :where(input, textarea, button):focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
 
-/* Button */
 #guestbooks___guestbook-form button[type="submit"] {
   justify-self: start;
 
   padding: 0.55rem 0.9rem;
-  border-radius: var(--radius);
   border: 1px solid var(--border);
+  border-radius: var(--radius);
 
   background: transparent;
   color: var(--accent);
+
   font: inherit;
 
-  transition: transform 0.12s ease, background-color 0.15s ease, border-color 0.15s ease;
+  transition:
+    transform 0.12s ease,
+    background-color 0.15s ease,
+    border-color 0.15s ease;
 }
 
 #guestbooks___guestbook-form button[type="submit"]:hover {
@@ -454,19 +539,19 @@ span.fieldmark {
   transform: translateY(0);
 }
 
-/* Challenge + error areas */
 #guestbooks___challenge-answer-container {
   margin-top: 0.25rem;
 }
 
 #guestbooks___error-message {
   margin-top: 0.25rem;
+
   color: color-mix(in srgb, var(--accent) 70%, white);
   opacity: 0.95;
+
   font-size: var(--font-small);
 }
 
-/* “Powered by” line */
 #guestbooks___guestbook-made-with {
   opacity: 0.85;
 }
@@ -475,101 +560,80 @@ span.fieldmark {
   color: var(--accent);
 }
 
-/* Messages header */
 #guestbooks___guestbook-messages-header {
   margin-top: 0;
 }
 
-/* Messages container */
 #guestbooks___guestbook-messages-container {
   display: grid;
   gap: 0.9rem;
   margin-block: 1rem 2rem;
 }
 
-/* Robust message styling (handles unknown markup from JS) */
 #guestbooks___guestbook-messages-container > * {
   padding: 0.85rem 1rem;
+
   border: 1px solid var(--border);
   border-radius: calc(var(--radius) + 2px);
   background: color-mix(in srgb, var(--surface) 75%, var(--bg));
 }
 
-/* Links inside messages */
 #guestbooks___guestbook-messages-container a {
   color: var(--accent);
 }
 
-/* Small/meta text inside messages */
 #guestbooks___guestbook-messages-container :where(small, time) {
   color: var(--muted);
 }
 
-/* QuietType - Palette Preview Dots */
+/* ==========================================================================
+   Palette Preview Dots
+   ========================================================================== */
+
 .palette-preview {
   display: inline-flex;
-  gap: 8px;
   align-items: center;
+  gap: 8px;
   margin: 0.35rem 0 0.75rem;
 }
 
 .palette-preview span {
+  display: inline-block;
   width: 12px;
   height: 12px;
-  border-radius: 999px;
-  display: inline-block;
 
-  /* token-driven rings that adapt to any palette */
   border: 1px solid color-mix(in srgb, var(--text) 18%, transparent);
+  border-radius: 999px;
   box-shadow: 0 0 0 1px color-mix(in srgb, var(--bg) 35%, transparent);
 }
 
-/* Copy code plugin */
-.copy-code-button {
-  color: var(--text-color);
-  opacity: 0.6;
-}
-
-.copy-code-button:focus-visible {
-  opacity: 1;
-}
-
-@media (hover: hover) {
-  .highlight:hover .copy-code-button {
-    opacity: 0.8;
-  }
-
-  .copy-code-button:hover {
-    opacity: 1;
-  }
-}
-
-/* QuietType Pagination */
+/* ==========================================================================
+   Pagination
+   ========================================================================== */
 
 body.blog .pagination {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   gap: 1rem;
 
-  margin: var(--space-block) auto 0;
+  margin: var(--space-block) auto 1rem;
   padding: 0.4rem 0.75rem;
 
-  font-size: var(--font-small);
-
-  background: color-mix(in srgb, var(--surface) 85%, var(--bg));
   border: 1px solid var(--border);
   border-radius: calc(var(--radius) + 2px);
+  background: color-mix(in srgb, var(--surface) 85%, var(--bg));
+  backdrop-filter: blur(6px);
+
+  font-size: var(--font-small);
 }
 
-/* Page info stays subtle */
 .pagination #pageInfo {
   color: var(--muted);
-  white-space: nowrap;
   font-family: var(--font-mono);
+  white-space: nowrap;
 }
 
-/* Links behave like your nav buttons */
 .pagination a {
   display: inline-flex;
   align-items: center;
@@ -595,13 +659,11 @@ body.blog .pagination {
   transform: translateY(0);
 }
 
-/* Disabled state stays quiet */
 .pagination a[disabled] {
   opacity: 0.35;
   pointer-events: none;
 }
 
-/* Arrow treatment — slightly tighter */
 .pagination #prevPage::before {
   content: "←";
   opacity: 0.8;
@@ -612,47 +674,78 @@ body.blog .pagination {
   opacity: 0.8;
 }
 
-.pagination {
-  backdrop-filter: blur(6px);
-}
-
-body.blog .pagination {
-  margin-bottom: 1rem;
-}
-
-/* Button Page Styling */
+/* ==========================================================================
+   Button Page
+   ========================================================================== */
 
 .button-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
   align-items: center;
+  gap: 12px;
 }
 
 .button-grid img {
   display: block;
-/*   border: 1px solid #ccc; */
   border-radius: 4px;
 }
 
-/* HTML: <div class="ribbon">Your text content</div> */
+/* ==========================================================================
+   Ribbon
+   ========================================================================== */
+
 .ribbon {
+  --r: 0.5em;
+  --c: #d81a14;
+
+  width: fit-content;
+  padding-inline: calc(0.2em + var(--r));
+
+  background-image:
+    linear-gradient(var(--c) 70%, #0000 0),
+    linear-gradient(to bottom left, #0000 50%, color-mix(in srgb, var(--c), #000 40%) 51% 84%, #0000 85%);
+  background-position: 0 0.15lh;
+  background-size: 100% 1lh;
+
+  clip-path: polygon(0 0.15lh, 100% 0.15lh, calc(100% - var(--r)) 0.5lh, 100% 0.85lh, 100% calc(100% - 0.15lh), 0 calc(100% - 0.15lh), var(--r) calc(100% - 0.5lh), 0 calc(100% - 0.85lh));
+
+  color: #fff;
   font-size: 28px;
   font-weight: bold;
-  color: #fff;
-}
-.ribbon {
-  --r: .5em;  /* control the cutout of the ribbon */
-  --c: #d81a14;
-  
-  padding-inline: calc(.2em + var(--r));
-  text-align: center;
   line-height: 2;
-  background-image: 
-    linear-gradient(var(--c) 70%,#0000 0), 
-    linear-gradient(to bottom left,#0000 50%, color-mix(in srgb,var(--c),#000 40%) 51% 84%,#0000 85%);
-  background-position: 0 .15lh;
-  background-size: 100% 1lh;
-  clip-path: polygon(0 .15lh,100% .15lh,calc(100% - var(--r)) .5lh,100% .85lh,100% calc(100% - .15lh),0 calc(100% - .15lh),var(--r) calc(100% - .5lh),0 calc(100% - .85lh));
-  width: fit-content;
+  text-align: center;
+}
+
+/* ==========================================================================
+   Bubbles Upvoting
+   ========================================================================== */
+
+.afterword-bubbles-line {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  opacity: 0.7;
+}
+
+.afterword-bubbles-line .bubbles-vote-btn {
+  --bt-fg: var(--muted);
+  --bt-accent: var(--accent);
+
+  all: unset;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+
+  color: var(--muted);
+  font-size: var(--font-small);
+}
+
+.afterword-bubbles-line .bubbles-vote-num {
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.bubbles-vote-tri {
+  display: none;
 }

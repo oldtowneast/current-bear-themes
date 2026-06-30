@@ -281,10 +281,10 @@ ul.blog-posts li span {
     line-height: 1.2;
 }
 
-/* ul.blog-posts li span::before {
-    content: "✱ ";
+ul.blog-posts li span::before {
+    content: "date ";
     color: var(--accent);
-} */
+}
 
 .blog-posts li time {
     color: var(--muted);
